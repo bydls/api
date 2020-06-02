@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>项目 - 接口管理系统</title>
+    <link rel="icon" href="/favicon.ico" type="image/ico">
+    <meta name="keywords" content="hbh,后台模板,后台管理系统,HTML模板">
+    <meta name="description" content="一个基于Bootstrap的后台管理系统。">
+    <meta name="author" content="hbh">
+    <!--公用css-->
+    <link href="../Public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../Public/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="../Public/css/style.min.css" rel="stylesheet">
+
+    <link href="../Public/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="../Public/css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="lyear-layout-web">
+    <div class="lyear-layout-container">
+        <!--头部信息-->
+        <header class="lyear-layout-header">
+
+            <nav class="navbar navbar-default">
+                <div class="topbar">
+
+                    <div class="topbar-left">
+                        <div class="lyear-aside-toggler">
+                            <span class="lyear-toggler-bar"></span>
+                            <span class="lyear-toggler-bar"></span>
+                            <span class="lyear-toggler-bar"></span>
+                        </div>
+                    </div>
+
+                    <ul class="topbar-right">
+                        <li class="dropdown dropdown-profile">
+                            <a href="javascript:void(0)" data-toggle="dropdown">
+                                <img class="img-avatar img-avatar-48 m-r-10" src="../Public/images/admin.jpg"  />
+                                <span class="username"><span class="caret"></span></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li> <a href="javascript:void(0)"><i class="mdi mdi-account"></i> 个人信息</a> </li>
+                                <li> <a href="javascript:void(0)"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+                                <li class="divider"></li>
+                                <li> <a href="javascript:;" onclick="outLogin();"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+
+        </header>
+        <!--End 头部信息-->
+
+
+        <!--左侧导航-->
+        <aside class="lyear-layout-sidebar">
+
+            <!-- logo -->
+            <div id="logo" class="sidebar-header">
+                <a href="index.html"><img src="../Public/images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
+            </div>
+            <div class="lyear-layout-sidebar-scroll">
+
+                <nav class="sidebar-main">
+                    <ul class="nav nav-drawer">
+                        <li class="nav-item"><a href="javascript:;" class="go_this_window" data-url="Api/index"><i class="mdi mdi-home"></i>首页</a></li>
+
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0);"><i class="mdi mdi-settings"></i>系统</a>
+                            <ul class="nav nav-subnav">
+                                <li class="nav-item nav-item-has-subnav">
+                                    <a href="javascript:void(0);"><i class="mdi mdi-chevron-right"></i> 账户</a>
+                                    <ul class="nav nav-subnav" style="display: none;">
+                                        <li class="user-manager"><a  href="javascript:;" class="go_this_window" data-url="user/manager"><i class="mdi mdi-chevron-right"></i> 管理员</a> </li>
+                                        <li class="role-role"><a   href="javascript:;" class="go_this_window" data-url="role/role"><i class="mdi mdi-chevron-right"></i> 角色者</a> </li>
+                                    </ul>
+                                </li>
+<!--                                <li class="Project_project"><a  href="javascript:;" class="go_this_window" data-url="project/project"><i class="mdi mdi-chevron-right"></i> 项目</a></li>-->
+                                <li class="nav-item nav-item-has-subnav">
+                                    <a href="javascript:void(0);"><i class="mdi mdi-chevron-right"></i> 项目</a>
+                                    <ul class="nav nav-subnav" style="display: none;">
+                                        <li class="project-project"><a  href="javascript:;" class="go_this_window" data-url="project/project"><i class="mdi mdi-chevron-right"></i> 项目管理</a> </li>
+                                        <li class="project-testuser"><a   href="javascript:;" class="go_this_window" data-url="project/testuser"><i class="mdi mdi-chevron-right"></i> 项目测试帐号</a> </li>
+                                    </ul>
+                                </li>
+                                <li class="user-logs"><a href="javascript:;" class="go_this_window" data-url="User/logs"><i class="mdi mdi-chevron-right"></i> 日志</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)"><i class="mdi mdi-view-list"></i> 项目</a>
+                            <ul class="nav nav-subnav" id="left-nav-html">
+
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <p class="copyright">Copyright &copy; 2019. <a target="_blank" href="#!">.</a> All rights reserved.</p>
+                </div>
+            </div>
+
+        </aside>
+
+        <!--End 左侧导航-->
+
+        <!--页面主要内容-->
+        <main class="lyear-layout-content">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <form class="form-inline"  data-url="api/lists" data-list="api-list">
+                                    <input type="hidden" name="pid" class="api-list-pid" value="0">
+                                    <div class="form-group">
+                                        <label class="sr-only">状态</label>
+                                        <select name="status" class="form-control">
+                                            <option value="">请选择状态</option>
+                                            <option value="1">使用中</option>
+                                            <option value="2">最新一周更新</option>
+                                            <option value="3">已废弃</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only">模块</label>
+                                        <select name="module_id" class="form-control bj-api-model-list">
+                                            <option value="0">请选择模块</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only">接口名称</label>
+                                        <input class="form-control" type="text" name="title" value="" placeholder="请输入接口名称..">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only">接口URL</label>
+                                        <input class="form-control" type="text" value="" name="url" placeholder="请输入接口URL..">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only">版本号</label>
+                                        <input class="form-control" type="text" value="" name="version" placeholder="请输入版本号 例：1.0.0">
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn" type="button" id="api-list-search-btn">搜索</button>
+                                    </div>
+                                    <div class="form-group">
+                                        <i class="mdi mdi-check-circle-outline" style="margin-left: 10px"></i> 使用中
+                                        <i class="mdi mdi-arrow-up-bold-circle color-success"></i> 最新一周更新
+                                        <i class="mdi mdi-close-circle-outline color-danger"></i> 此接口已废弃
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <a href="javascript:;" style="display: inline-block" class="go_this_window_route" data-url="api/editapi" data-route='' id="api-btn-addroute">
+                                    <button class="btn btn-primary btn-w-xs"><i class="mdi mdi-plus-circle-outline"></i> 添加</button>
+                                </a>
+                                <!--<a href="javascript:;" class="text-right"><span class="dingtalk label label-danger" data-id="{$id}">钉钉提醒</span></a>-->
+                            </div>
+                            <div class="card-body">
+
+                                <div class="table-responsive" id="api-list">
+
+                                </div>
+                                <div id="page"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <!--End 页面主要内容-->
+    </div>
+</div>
+
+
+<script type="text/html" id="api-list-html">
+    <table class="table table-hover" data-del_url="api/del">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>标签  模块 - 名称</th>
+            <th>请求</th>
+            <th>URI</th>
+            <th>操作</th>
+            <th>版本</th>
+            <th>更新者</th>
+            <th>更新日期</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{each data}}
+            <tr>
+                <th scope="row">{{$value.id}}</th>
+                <td width="400">
+                    {{if $value.is_del ==1}}
+                    <i class="mdi mdi-close-circle-outline color-danger"></i>
+                    {{else if $value.isnews==1}}
+                    <i class="mdi mdi-arrow-up-bold-circle color-success"></i>
+                    {{else}}
+                    <i class="mdi mdi-check-circle-outline"></i>
+                    {{/if}}
+                    {{each $value.tag_list v k}}
+                    {{if v.tk ==1}}
+                    <span class="label label-info">{{v}}</span>&nbsp;
+                    {{else}}
+                    <span class="label label-cyan">{{v}}</span>&nbsp;
+                    {{/if}}
+                    {{/each}}
+                    <b>{{$value.module_title}}</b> - {{$value.title}}
+                </td>
+                <td>
+                    <i class="color-info font-style-normal">{{if $value.restype==1}} POST {{else}} GET {{/if}}</i>
+                    {{if $value.ishtml==1}} <i class="color-primary font-style-normal">网页</i> {{/if}}
+                </td>
+                <td>{{$value.url}}</td>
+                <td>
+                    <a href="javascript::" class="go_this_window_route" data-url="api/show" data-route='{"pid":"{{$value.pid}}","id":"{{$value.id}}"}'>
+                        <i class="mdi mdi-internet-explorer"></i> 查看
+                    </a>
+                    <a href="javascript::" class="go_this_window_route" data-url="api/test" data-route='{"pid":"{{$value.pid}}","id":"{{$value.id}}"}'>
+                        <i class="mdi mdi-console"></i> 测试
+                    </a>
+
+                    <if condition="$vo['isshow'] eq 1">
+                        <a href="javascript::" class="go_this_window_route" data-url="api/editapi" data-route='{"pid":{{$value.pid}},"id":{{$value.id}}}'>
+                            <i class="mdi mdi-pencil-circle-outline"></i> 修改
+                        </a>
+                        <a href="javascript:void(0);" data-id="{{$value.id}}" class="bj-del-this">
+                            <i class="mdi mdi-delete-circle"></i> 删除
+                        </a>
+                    </if>
+                </td>
+                <td>{{$value.version}}</td>
+                <td>{{$value.lastuser}}</td>
+                <td>{{$value.lasttime}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</script>
+
+<!--公用js-->
+<script type="text/javascript" src="../Public/js/jquery.min.js"></script>
+<script type="text/javascript" src="../Public/js/template.js"></script>
+<script type="text/javascript" src="../Public/js/layui/layui.all.js"></script>
+<script type="text/javascript" src="../Public/config.js"></script>
+<script type="text/javascript" src="../Public/common.js"></script>
+
+<script type="text/javascript" src="../Public/js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="../Public/js/main.min.js"></script>
+
+
+<script type="text/javascript" src="../Public/js/bootstrap.min.js"></script>
+
+
+<script>
+    var project_id=getProjectID();
+    getModule(project_id);
+    $('#api-btn-addroute').attr('data-route',JSON.stringify({pid:project_id}));
+    $('.api-list-pid').val(project_id);
+    $('#api-list-search-btn').addClass('bj-list-search');
+</script>
+
+</body>
+</html>

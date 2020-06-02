@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>首页-接口管理系统</title>
+    <link rel="icon" href="favicon.ico" type="image/ico">
+    <meta name="keywords" content="hbh,后台模板,后台管理系统,HTML模板">
+    <meta name="description" content="一个基于Bootstrap的后台管理系统。">
+    <meta name="author" content="hbh">
+
+    <!--公用css-->
+    <link href="../Public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../Public/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="../Public/css/style.min.css" rel="stylesheet">
+    <link href="../Public/css/custom.css" rel="stylesheet">
+</head>
+<body>
+<div class="lyear-layout-web">
+    <div class="lyear-layout-container">
+        <!--头部信息-->
+        <header class="lyear-layout-header">
+
+            <nav class="navbar navbar-default">
+                <div class="topbar">
+
+                    <div class="topbar-left">
+                        <div class="lyear-aside-toggler">
+                            <span class="lyear-toggler-bar"></span>
+                            <span class="lyear-toggler-bar"></span>
+                            <span class="lyear-toggler-bar"></span>
+                        </div>
+                    </div>
+
+                    <ul class="topbar-right">
+                        <li class="dropdown dropdown-profile">
+                            <a href="javascript:void(0)" data-toggle="dropdown">
+                                <img class="img-avatar img-avatar-48 m-r-10" src="../Public/images/admin.jpg"  />
+                                <span class="username"><span class="caret"></span></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li> <a href="javascript:void(0)" class="go_this_window" data-url="user/manager"><i class="mdi mdi-account"></i> 个人信息</a> </li>
+                                <li> <a href="javascript:void(0)" class="go_this_window" data-url="user/manager"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+                                <li class="divider"></li>
+                                <li> <a href="javascript:;" onclick="outLogin();"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+
+        </header>
+        <!--End 头部信息-->
+
+
+        <!--左侧导航-->
+        <aside class="lyear-layout-sidebar">
+
+            <!-- logo -->
+            <div id="logo" class="sidebar-header">
+                <a href="index.html"><img src="../Public/images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
+            </div>
+            <div class="lyear-layout-sidebar-scroll">
+
+                <nav class="sidebar-main">
+                    <ul class="nav nav-drawer">
+                        <li class="nav-item"><a href="javascript:;" class="go_this_window" data-url="Api/index"><i class="mdi mdi-home"></i>首页</a></li>
+
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0);"><i class="mdi mdi-settings"></i>系统</a>
+                            <ul class="nav nav-subnav">
+                                <li class="nav-item nav-item-has-subnav">
+                                    <a href="javascript:void(0);"><i class="mdi mdi-chevron-right"></i> 账户</a>
+                                    <ul class="nav nav-subnav" style="display: none;">
+                                        <li class="user-manager"><a  href="javascript:;" class="go_this_window" data-url="user/manager"><i class="mdi mdi-chevron-right"></i> 管理员</a> </li>
+                                        <li class="role-role"><a   href="javascript:;" class="go_this_window" data-url="role/role"><i class="mdi mdi-chevron-right"></i> 角色者</a> </li>
+                                    </ul>
+                                </li>
+<!--                                <li class="Project_project"><a  href="javascript:;" class="go_this_window" data-url="project/project"><i class="mdi mdi-chevron-right"></i> 项目</a></li>-->
+                                <li class="nav-item nav-item-has-subnav">
+                                    <a href="javascript:void(0);"><i class="mdi mdi-chevron-right"></i> 项目</a>
+                                    <ul class="nav nav-subnav" style="display: none;">
+                                        <li class="project-project"><a  href="javascript:;" class="go_this_window" data-url="project/project"><i class="mdi mdi-chevron-right"></i> 项目管理</a> </li>
+                                        <li class="project-testuser"><a   href="javascript:;" class="go_this_window" data-url="project/testuser"><i class="mdi mdi-chevron-right"></i> 项目测试帐号</a> </li>
+                                    </ul>
+                                </li>
+                                <li class="user-logs"><a href="javascript:;" class="go_this_window" data-url="User/logs"><i class="mdi mdi-chevron-right"></i> 日志</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)"><i class="mdi mdi-view-list"></i> 项目</a>
+                            <ul class="nav nav-subnav" id="left-nav-html">
+
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <p class="copyright">Copyright &copy; 2019. <a target="_blank" href="#!">.</a> All rights reserved.</p>
+                </div>
+            </div>
+
+        </aside>
+
+        <!--End 左侧导航-->
+
+
+
+
+
+
+        <!--页面主要内容-->
+        <main class="lyear-layout-content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card bg-primary">
+                            <div class="card-body clearfix">
+                                <div class="pull-right">
+                                    <p class="h6 text-white m-t-0">今日操作频次</p>
+                                    <p class="h3 text-white m-b-0 index-today-count">...</p>
+                                </div>
+                                <div class="pull-left"><span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-unity fa-1-5x"></i></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card bg-danger">
+                            <div class="card-body clearfix">
+                                <div class="pull-right">
+                                    <p class="h6 text-white m-t-0">用户总数</p>
+                                    <p class="h3 text-white m-b-0 index-user-count">...</p>
+                                </div>
+                                <div class="pull-left"><span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-account fa-1-5x"></i></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card bg-success">
+                            <div class="card-body clearfix">
+                                <div class="pull-right">
+                                    <p class="h6 text-white m-t-0">项目总量</p>
+                                    <p class="h3 text-white m-b-0 index-project-count">...</p>
+                                </div>
+                                <div class="pull-left"><span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-windows fa-1-5x"></i></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card bg-purple">
+                            <div class="card-body clearfix">
+                                <div class="pull-right">
+                                    <p class="h6 text-white m-t-0">接口总量</p>
+                                    <p class="h3 text-white m-b-0 index-list-count">...</p>
+                                </div>
+                                <div class="pull-left"><span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-link-off fa-1-5x"></i></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-5">
+                        <div class="card">
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>昵称</th>
+                                            <th>操作</th>
+                                            <th>时间 <a href="javascript:;"  data-url="User/logs"  class="go_this_window small text-default pull-right"><u>更多</u></a> </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="admin_log_tr" id="index-login-log">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+<!--                                <div id="page"></div>-->
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>系统开发</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <td>程序版本</td>
+                                            <td>v2.1.0 <a href="javascript:webHistory();" class="text-primary">历史更新</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>开发团队</td>
+                                            <td><a href="http://www.hebinghua.com/" class="text-default">何冰华</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>电子邮箱</td>
+                                            <td>944870269@qq.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td>版权所有</td>
+                                            <td>豫ICP备17048782号</td>
+                                        </tr>
+                                        <tr>
+                                            <td>开源协议</td>
+                                            <td>本系统遵循Nginx开源协议发布，并提供免费使用。</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>服务器环境</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive" id="index-system-config">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                Copyright © 2019. All right reserved
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+        <!--End 页面主要内容-->
+    </div>
+</div>
+
+<div class="webHistory" style="display: none">
+    <div class="col-md-12">
+        <p>&nbsp;</p>
+        <p><b>v2.1.0</b> 2019/10/15</p>
+        <p> 增加日志功能，json解析，分页美化</p>
+        <p><b>v2.0.0</b> 2019/4/20</p>
+        <p> 版本重构</p>
+        <p><b>v1.0.0</b> 2018/09/05</p>
+        <p> 版本发布</p>
+    </div>
+</div>
+<script type="text/html" id="index-login-log-html">
+    {{each data}}
+    <tr>
+    <td>{{$value.nickname}}</td>
+    <td>{{$value.infos_sub}}</td>
+    <td>{{$value.addtime}}</td>
+    </tr>
+    {{/each}}
+</script>
+
+<script type="text/html" id="index-system-config-html">
+    <table class="table table-hover table-bordered">
+        <tbody>
+        <tr>
+            <td>PHP版本</td>
+            <td>{{Phpverion}}</td>
+        </tr>
+        <tr>
+            <td>Mysql版本</td>
+            <td>{{Mysqlverion}}</td>
+        </tr>
+        <tr>
+            <td>服务器</td>
+            <td>{{Server}}</td>
+        </tr>
+        <tr>
+            <td>当前时间</td>
+            <td>{{Times}}</td>
+        </tr>
+        <tr>
+            <td>鸣谢</td>
+            <td>
+                <a href="http://www.hebinghua.com/" class="text-default">何冰华</a>、hbh、bydls
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</script>
+
+
+<!--公用js-->
+<script type="text/javascript" src="../Public/js/jquery.min.js"></script>
+<script type="text/javascript" src="../Public/config.js"></script>
+<script type="text/javascript" src="../Public/common.js"></script>
+
+<script type="text/javascript" src="../Public/js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="../Public/js/main.min.js"></script>
+<script type="text/javascript" src="../Public/js/template.js"></script>
+
+<script type="text/javascript" src="../Public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../Public/js/layui/layui.js"></script>
+
+
+<!--图表插件-->
+<script type="text/javascript">
+    var log_count=10;
+    getSystemConfig();
+    function getSystemConfig() {
+        ajax('system/config','',function (data) {
+            log_count=data.adminLogsCount;
+            $('#index-system-config').html(template('index-system-config-html',data));
+            $('.index-list-count').text(data.list_count);
+            $('.index-user-count').text(data.user_count);
+            $('.index-today-count').text(data.today_count);
+            $('.index-project-count').text(data.project_count);
+        })
+    }
+
+    var page = 1;
+    layui.use(['element', 'form', 'laypage'], function () {
+        var element = layui.element, form = layui.form, laypage = layui.laypage;
+        laypage.render({
+            elem: 'page',
+            count: log_count,
+            limit: 4,
+            curr: page,
+            first: '首页',
+            last: '尾页',
+            layout: ['count', 'prev', 'page', 'next'],
+            jump: function (obj, first) {
+                page = obj.curr;
+                ajax('log/action',{page: page},function (data) {
+                    let html = '';
+                    if(data.total>0){
+                        $('#index-login-log').html(template('index-login-log-html',data));
+                    }
+                });
+
+            }
+        });
+    });
+
+
+    function webHistory() {
+        layer.open({
+            type:1,
+            title:'历史发布',
+            area:['300px','300px'],
+            content:$('.webHistory'),
+        });
+    }
+
+</script>
+</body>
+</html>

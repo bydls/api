@@ -1,0 +1,72 @@
+.color-success {
+    color: #16d17f
+}
+
+.color-danger {
+    color: #f96868
+}
+
+.color-cyan {
+    color: #57c7d4
+}
+
+.color-info {
+    color: #48b0f7
+}
+
+.font-style-normal {
+    font-style: normal
+}
+
+.color-primary {
+    color: #52d3c7
+}
+
+.margin-5 {
+    margin: 0 5px
+}
+
+.margin-bottom {
+    margin-bottom: 10px
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.padding-top-10 {
+    padding-top: 10px;
+}
+
+.margin-left-10 {
+    margin-left: 10px;
+}
+
+.margin-left-30 {
+    margin-left: 30px;
+}
+
+.margin-left-50 {
+    margin-left: 50px;
+}
+
+body {
+    background-color: #f2f2f2;
+    color: #333333;
+}
+
+.card-header {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.sidebar-footer {
+    border-top: 1px solid #e6e6e6;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    border-color: #e6e6e6
+}
+
+.table thead tr{
+    background-color:#f2f2f2;
+}

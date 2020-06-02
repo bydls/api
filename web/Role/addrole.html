@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>YoungApi后台管理系统模板</title>
+    <link rel="icon" href="/favicon.ico" type="image/ico">
+    <meta name="keywords" content="YoungApi,后台模板,后台管理系统,HTML模板">
+    <meta name="description" content="YoungApi是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
+    <meta name="author" content="gm">
+    <link href="__STATIC__js/layui/css/layui.css" rel="stylesheet" media="all">
+    <link href="__STATIC__css/bootstrap.min.css" rel="stylesheet">
+    <link href="__STATIC__css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="__STATIC__css/style.min.css" rel="stylesheet">
+    <link href="__STATIC__css/custom.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="lyear-layout-web">
+    <div class="lyear-layout-container">
+        <!--页面主要内容-->
+        <main class="lyear-layout-content padding-top-10">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!--接口添加-->
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="form-horizontal" id="form_param" onsubmit="return false;">
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-3">角色名：</label>
+                                        <div class="col-xs-8">
+                                            <input class="form-control" type="text" name="title" required value="{$info.title}" required placeholder="请输入角色名..." autocomplete="off">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-xs-8 col-xs-offset-3">
+                                            <button class="btn btn-primary" id="form_buuton" type="button">立即提交</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--End 页面主要内容-->
+    </div>
+</div>
+
+<script type="text/javascript" src="__STATIC__js/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__js/bootstrap.min.js"></script>
+<script type="text/javascript" src="__STATIC__js/layui/layui.js"></script>
+<script>
+    var id='{$id}';
+
+    layui.use(['layer'], function(){
+        var layer = layui.layer;
+    });
+
+    $('#form_buuton').on('click',function () {
+        $.ajax({
+            type:'post',
+            data:$('#form_param').serialize(),
+            dataType:'json',
+            url:"{:U('Role/addrole')}?id="+id,
+        }).done(function(data){
+            layer.msg(data.msg,{time:1000},function(){
+                if(data.status==200){
+                    parent.location.reload();
+                }
+            });
+        }).fail(function(){
+            layer.msg('网络异常！');return false;
+        });
+        return false;
+    });
+
+
+</script>
+</body>
+</html>

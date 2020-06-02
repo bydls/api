@@ -1,0 +1,31 @@
+<script type="text/javascript" src="__STATIC__js/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__js/bootstrap.min.js"></script>
+<script type="text/javascript" src="__STATIC__js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="__STATIC__js/main.min.js"></script>
+<script type="text/javascript" src="__STATIC__js/layui/layui.js"></script>
+<script type="text/javascript" src="__STATIC__js/YoungPrettifyJson.js"></script>
+<script>
+
+    $(function () {
+        /*自动处理左侧菜单选中的问题*/
+        const sidebarnav_route = "<?php echo CONTROLLER_NAME.'_'.ACTION_NAME;?>";
+        $('.sidebar-main .' + sidebarnav_route).parents('li.nav-item').addClass('open');
+        if (sidebarnav_route == 'Api_lists') {
+            const sidebarnav_route_id = sidebarnav_route + "_{:I('get.id')}";
+            $('.sidebar-main .' + sidebarnav_route).parent('ul.nav-subnav').show();
+            $('.' + sidebarnav_route_id).addClass('active');
+        } else if (sidebarnav_route == 'Api_add' || sidebarnav_route == 'Api_test' || sidebarnav_route == 'Api_shows') {
+            const sidebarnav_route_id = "{:I('get.pid')}";
+            $('.sidebar-main .Api_lists').parent('ul.nav-subnav').show();
+            $('.Api_lists_' + sidebarnav_route_id).addClass('active');
+        } else {
+            $('.sidebar-main .' + sidebarnav_route).parent('ul.nav-subnav').show().end().addClass('active');
+        }
+    });
+
+    layui.use(['laypage', 'layer'], function() {
+        var layer = layui.layer;
+
+    })
+
+</script>

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>项目 - 接口管理系统</title>
+    <link rel="icon" href="/favicon.ico" type="image/ico">
+    <meta name="keywords" content="hbh,后台模板,后台管理系统,HTML模板">
+    <meta name="description" content="一个基于Bootstrap的后台管理系统。">
+    <meta name="author" content="hbh">
+    <!--公用css-->
+    <link href="../Public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../Public/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="../Public/css/style.min.css" rel="stylesheet">
+
+    <link href="../Public/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="../Public/css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="lyear-layout-web">
+    <div class="lyear-layout-container">
+        <!--头部信息-->
+        <header class="lyear-layout-header">
+
+            <nav class="navbar navbar-default">
+                <div class="topbar">
+
+                    <div class="topbar-left">
+                        <div class="lyear-aside-toggler">
+                            <span class="lyear-toggler-bar"></span>
+                            <span class="lyear-toggler-bar"></span>
+                            <span class="lyear-toggler-bar"></span>
+                        </div>
+                    </div>
+
+                    <ul class="topbar-right">
+                        <li class="dropdown dropdown-profile">
+                            <a href="javascript:void(0)" data-toggle="dropdown">
+                                <img class="img-avatar img-avatar-48 m-r-10" src="../Public/images/admin.jpg"/>
+                                <span class="username"><span class="caret"></span></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="javascript:void(0)"><i class="mdi mdi-account"></i> 个人信息</a></li>
+                                <li><a href="javascript:void(0)"><i class="mdi mdi-lock-outline"></i> 修改密码</a></li>
+                                <li class="divider"></li>
+                                <li><a href="javascript:;" onclick="outLogin();"><i class="mdi mdi-logout-variant"></i>
+                                    退出登录</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+
+        </header>
+        <!--End 头部信息-->
+
+
+        <!--左侧导航-->
+        <aside class="lyear-layout-sidebar">
+
+            <!-- logo -->
+            <div id="logo" class="sidebar-header">
+                <a href="index.html"><img src="../Public/images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
+            </div>
+            <div class="lyear-layout-sidebar-scroll">
+
+                <nav class="sidebar-main">
+                    <ul class="nav nav-drawer">
+                        <li class="nav-item"><a href="javascript:;" class="go_this_window" data-url="Api/index"><i class="mdi mdi-home"></i>首页</a></li>
+
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0);"><i class="mdi mdi-settings"></i>系统</a>
+                            <ul class="nav nav-subnav">
+                                <li class="nav-item nav-item-has-subnav">
+                                    <a href="javascript:void(0);"><i class="mdi mdi-chevron-right"></i> 账户</a>
+                                    <ul class="nav nav-subnav" style="display: none;">
+                                        <li class="user-manager"><a  href="javascript:;" class="go_this_window" data-url="user/manager"><i class="mdi mdi-chevron-right"></i> 管理员</a> </li>
+                                        <li class="role-role"><a   href="javascript:;" class="go_this_window" data-url="role/role"><i class="mdi mdi-chevron-right"></i> 角色者</a> </li>
+                                    </ul>
+                                </li>
+<!--                                <li class="Project_project"><a  href="javascript:;" class="go_this_window" data-url="project/project"><i class="mdi mdi-chevron-right"></i> 项目</a></li>-->
+                                <li class="nav-item nav-item-has-subnav">
+                                    <a href="javascript:void(0);"><i class="mdi mdi-chevron-right"></i> 项目</a>
+                                    <ul class="nav nav-subnav" style="display: none;">
+                                        <li class="project-project"><a  href="javascript:;" class="go_this_window" data-url="project/project"><i class="mdi mdi-chevron-right"></i> 项目管理</a> </li>
+                                        <li class="project-testuser"><a   href="javascript:;" class="go_this_window" data-url="project/testuser"><i class="mdi mdi-chevron-right"></i> 项目测试帐号</a> </li>
+                                    </ul>
+                                </li>
+                                <li class="user-logs"><a href="javascript:;" class="go_this_window" data-url="User/logs"><i class="mdi mdi-chevron-right"></i> 日志</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)"><i class="mdi mdi-view-list"></i> 项目</a>
+                            <ul class="nav nav-subnav" id="left-nav-html">
+
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <p class="copyright">Copyright &copy; 2019. <a target="_blank" href="#!">.</a> All rights reserved.</p>
+                </div>
+            </div>
+
+        </aside>
+
+        <!--End 左侧导航-->
+
+        <!--页面主要内容-->
+        <main class="lyear-layout-content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-md-12" id="api-info">
+
+
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--End 页面主要内容-->
+    </div>
+</div>
+
+
+<script type="text/html" id="api-info-html">
+    <!--接口添加-->
+    <div class="card">
+        <div class="card-header"><h4>接口添加</h4></div>
+        <div class="card-body">
+            <form class="form-horizontal" onsubmit="return false;" data-url="api/edit">
+                <input type="hidden" name="pid" value="{{pid}}">
+                <input type="hidden" name="id" value="{{id}}" class="api-this-id">
+                <div class="form-group">
+                    <label class="control-label col-md-1">请求：</label>
+                    <div class="col-md-2">
+                        <select name="restype" class="form-control">
+                            <option value="1" {{if restype==1||!restype}} selected{{/if}}>POST</option>
+                            <option value="0" {{if restype==0}} selected{{/if}}>GET</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="lyear-radio radio-inline radio-primary">
+                            <input type="radio" name="ishtml" {{if ishtml==0 || !ishtml}} checked {{/if}} value="0"><span>接口</span>
+                        </label>
+                        <label class="lyear-radio radio-inline radio-primary">
+                            <input type="radio" name="ishtml" {{if ishtml==1}} checked {{/if}} value="1"><span>网页</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1">模块：</label>
+                    <div class="col-md-2">
+                        <select name="module_id" class="form-control bj-api-model-list">
+                            <option value="0">请选择对应的模块</option>
+                            {{each module_list}}
+                            <option value="{{$value.id}}" {{if module_id==$value.id}}selected{{/if}}>{{$value.title}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <button class="btn btn-primary btn-sm editmodule" type="button"  data-pid="{{pid}}" data-id="0" >添加模块</button>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1">URL：</label>
+                    <div class="col-md-4">
+                        <input class="form-control" type="text" name="url" value="{{if url}}{{url}}{{else}}{{project_url}}{{/if}}" autocomplete="off"
+                               placeholder="请输入接口地址" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1">URL_ID：</label>
+                    <div class="col-md-4">
+                        <input class="form-control" type="text" name="url_id" value="{{url_id}}" autocomplete="off"
+                               placeholder="请输入接口地址(前端用)" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1">名称：</label>
+                    <div class="col-md-4">
+                        <input class="form-control" type="text" name="title" value="{{title}}" autocomplete="off"
+                               placeholder="请输入接口名称" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1">版本号：</label>
+                    <div class="col-md-4">
+                        <input class="form-control" type="text" name="version" value="{{version}}" autocomplete="off"
+                               placeholder="请输入接口版本 如：1.1.1(APP用)" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1">备注：</label>
+                    <div class="col-md-4">
+                        <textarea class="form-control" name="intro" rows="3" placeholder="请输入备注..">{{intro}}</textarea>
+                    </div>
+                </div>
+                <if condition="$info['id'] gt 0">
+                    <div class="form-group">
+                        <label class="control-label col-md-1">是否废弃：</label>
+                        <div class="col-md-4">
+                            <label class="lyear-radio radio-inline radio-primary">
+                                <input type="radio" name="is_del" {{if is_del==0 ||!is_del}} checked {{/if}}
+                                value="0"><span>否</span>
+                            </label>
+                            <label class="lyear-radio radio-inline radio-primary">
+                                <input type="radio" name="is_del" {{if is_del==1}} checked {{/if}}
+                                value="1"><span>是</span>
+                            </label>
+                        </div>
+                    </div>
+                </if>
+                <div class="form-group">
+                    <label class="control-label col-md-1">标签：</label>
+                    <div class="col-md-4">
+                        {{each tags_list}}
+                        <label class="lyear-checkbox checkbox-inline checkbox-primary">
+                            <input type="checkbox" name="tags[]" value="{{$value.id}}"><span>{{$value.title}}</span>
+                        </label>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4 col-md-offset-1">
+                        <button class="btn btn-primary api-form-button" type="button">立即提交</button>
+                        <button class="btn btn-default" type="reset">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--请求参数-->
+    <div class="card">
+        <div class="card-header"><h4>请求参数</h4></div>
+        <div class="card-body">
+            <a href="javascript:void(0)" class="param-edit" data-id="0" data-cid="{{id}}">
+                <button class="btn btn-primary btn-w-xs margin-bottom"><i class="mdi mdi-plus-circle-outline"></i> 添加
+                </button>
+            </a>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" data-del_url_2="api/param/del">
+                    <thead>
+                    <tr>
+                        <th><b>参数名</b></th>
+                        <th><b>参数说明</b></th>
+                        <th><b>key必填</b></th>
+                        <th><b>value必填</b></th>
+                        <th><b>类型</b></th>
+                        <th><b>示例</b></th>
+                        <th><b>操作</b></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{each param_list}}
+                        <tr>
+                            <td>
+                                {{$value.title}}
+                                {{if $value.lasttime >oldtime}}
+                                <i class="mdi mdi-arrow-up-bold-circle color-success"></i>
+                                {{/if}}
+                            </td>
+                            <td>{{$value.title_desc}}</td>
+                            <td>
+                                {{if $value.isrequired==1}}必填{{else}}非必填{{/if}}
+                            </td>
+                            <td>
+                                {{if $value.isvalue==1}}必填{{else}}非必填{{/if}}
+                            </td>
+                            <td><span class="label label-default">{{$value.datatype}}</span></td>
+                            <td>{{$value.demo_desc}}</td>
+                            <td>
+                                <a class=" param-edit" href="javascript:;" data-id="{{$value.id}}" data-cid="{{$value.list_id}}">
+                                    <i class="mdi mdi-pencil-circle-outline"></i> 修改
+                                </a>
+                                <a class="bj-del-this-2" href="javascript:;" data-id="{{$value.id}}" data-cid="{{$value.list_id}}">
+                                    <i class="mdi mdi-delete-circle"></i> 删除
+                                </a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--返回参数-->
+    <div class="card">
+        <div class="card-header"><h4>返回参数</h4></div>
+        <div class="card-body">
+            <a href="javascript:void(0)" class="goback-edit" data-id="0" data-cid="{{id}}">
+                <button class="btn btn-primary btn-w-xs margin-bottom"><i class="mdi mdi-plus-circle-outline"></i> 添加
+                </button>
+            </a>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" data-del_url_2="api/goback/del">
+                    <thead>
+                    <tr>
+                        <th><b>字段名</b></th>
+                        <th><b>说明</b></th>
+                        <th><b>是否必含</b></th>
+                        <th><b>类型</b></th>
+                        <th><b>示例</b></th>
+                        <th><b>操作</b></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{each goback_list}}
+                        <tr class="tr" data-id="{{$value.id}}">
+                            <td>
+                                {{$value.title}}
+                                {{if $value.istop==1}}<span class="label label-success">list同级</span>{{/if}}
+                                {{if $value.lasttime> oldtime}}<i class="mdi mdi-arrow-up-bold-circle color-success"></i>{{/if}}
+                            </td>
+                            <td>{{$value.title_desc}}</td>
+                            <td>
+                                {{if $value.isrequired==1}}必含{{else}}非必含{{/if}}
+                            </td>
+                            <td><span class="label label-default">{{$value.datatype}}</span></td>
+                            <td>{{$value.demo_desc}}</td>
+                            <td>
+                                <a class="goback-edit" href="javascript:;" data-id="{{$value.id}}" data-cid="{{$value.list_id}}">
+                                    <i class="mdi mdi-pencil-circle-outline"></i> 修改
+                                </a>
+                                <a class="bj-del-this-2" href="javascript:;" data-id="{{$value.id}}" data-cid="{{$value.list_id}}">
+                                    <i class="mdi mdi-delete-circle"></i> 删除
+                                </a>
+                                <a class="goback-edit" href="javascript:;"  data-fid="{{$value.id}}" data-cid="{{$value.list_id}}">
+                                    <i class="mdi mdi-plus-circle-outline"></i> 添加
+                                </a>
+                            </td>
+                        </tr>
+
+
+
+                        {{each $value.child c k}}
+                            <tr>
+                                <td>
+                                    <i class="mdi mdi-chevron-right margin-left-10"></i> {{c.title}}
+                                    {{if c.lasttime >oldtime}}
+                                    <i class="mdi mdi-arrow-up-bold-circle color-success"></i>
+                                    {{/if}}
+                                </td>
+                                <td>{{c.title_desc}}</td>
+                                <td>
+                                    {{if c.isrequired ==1}} 必含 {{else}} 非必含 {{/if}}
+                                </td>
+                                <td><span class="label label-default">{{c.datatype}}</span></td>
+                                <td>{{c.demo_desc}}</td>
+                                <td>
+                                    <a class=" goback-edit" href="javascript:;" data-id="{{c.id}}" data-cid="{{c.list_id}}" data-fid="{{c.fid}}">
+                                        <i class="mdi mdi-pencil-circle-outline"></i> 修改
+                                    </a>
+                                    <a class=" bj-del-this-2" href="javascript:;" data-id="{{c.id}}" data-cid="{{c.list_id}}">
+                                        <i class="mdi mdi-delete-circle"></i> 删除
+                                    </a>
+                                    <a class="goback-edit" href="javascript:;"  data-cid="{{c.list_id}}" data-fid="{{c.id}}">
+                                        <i class="mdi mdi-plus-circle-outline"></i> 添加
+                                    </a>
+                                </td>
+                            </tr>
+                            {{each c.child vv kk}}
+                                <tr>
+                                    <td>
+                                        <i class="mdi mdi-chevron-double-right margin-left-30"></i>{{vv.title}}
+                                        {{if vv.lasttime >oldtime}}
+                                        <i class="mdi mdi-arrow-up-bold-circle color-success"></i>
+                                        {{/if}}
+                                    </td>
+                                    <td>{{vv.title_desc}}</td>
+                                    <td>
+                                        {{if vv.isrequired ==1}}
+                                        必含
+                                        {{else}}
+                                        非必含
+                                        {{/if}}
+                                    </td>
+                                    <td><span class="label label-default">{{vv.datatype}}</span></td>
+                                    <td>{{vv.demo_desc}}</td>
+                                    <td>
+                                        <a class=" goback-edit" href="javascript:;" data-id="{{vv.id}}" data-cid="{{vv.list_id}}" data-fid="{{vv.fid}}">
+                                            <i class="mdi mdi-pencil-circle-outline"></i> 修改
+                                        </a>
+                                        <a class=" bj-del-this-2" href="javascript:;" data-id="{{vv.id}}" data-cid="{{vv.list_id}}">
+                                            <i class="mdi mdi-delete-circle"></i> 删除
+                                        </a>
+                                        <a class="goback-edit" href="javascript:;"  data-cid="{{vv.list_id}}" data-fid="{{vv.id}}">
+                                            <i class="mdi mdi-plus-circle-outline"></i> 添加
+                                        </a>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                        {{/each}}
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--添加请求参数-->
+<script type="text/html" id="param-edit-html">
+    <div class="card">
+        <div class="card-body">
+            <form class="form-horizontal"  onsubmit="return false;" data-url="api/param/edit">
+                <input type="hidden" name="id" value="{{id}}">
+                <input type="hidden" name="list_id" value="{{list_id}}">
+                <div class="form-group">
+                    <label class="control-label col-xs-2">字段名：</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" name="title"  value="{{title}}" required placeholder="请输入字段名..." autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">字段说明：</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" name="title_desc"  value="{{title_desc}}" required placeholder="请输入字段说明..." autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">字段类型：</label>
+                    <div class="col-xs-8">
+                        <select name="datatype" required class="form-control">
+                            <option value="string" {{if datatype=='string'}}selected{{/if}}>string</option>
+                            <option value="array" {{if datatype=='array'}}selected{{/if}}>array</option>
+                            <option value="int"  {{if datatype=='int'}}selected{{/if}}>int</option>
+                            <option value="float"  {{if datatype=='float'}}selected{{/if}}>float</option>
+                            <option value="file"  {{if datatype=='file'}}selected{{/if}}>file</option>
+                            <option value="json"  {{if datatype=='json'}}selected{{/if}}>json</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">字段示例：</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" name="demo_desc" value="{{demo_desc}}" autocomplete="off" placeholder="请输入参数示例..." required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">排序值：</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" name="sort" value="{{if sort>0}}{{sort}}{{else}}1{{/if}}" autocomplete="off" placeholder="请输入参数排序值..." required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">key必填：</label>
+                    <div class="col-xs-8">
+                        <label class="radio-inline" >
+                            <input type="radio" name="isrequired" value="1" {{if !isrequired||isrequired==1}}checked{{/if}}>是
+                        </label>
+                        <label class="radio-inline" >
+                            <input type="radio" name="isrequired" value="0" {{if isrequired==0}}checked{{/if}}>否
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">value必填：</label>
+                    <div class="col-xs-8">
+                        <label class="radio-inline" >
+                            <input type="radio" name="isvalue" value="1" {{if !isvalue||isvalue==1}}checked{{/if}}>是
+                        </label>
+                        <label class="radio-inline" >
+                            <input type="radio" name="isvalue" value="0" {{if isvalue==0}}checked{{/if}}>否
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <button class="btn btn-primary bj-form-button"  type="button">立即提交</button>
+                        <!--<button class="btn btn-default" type="reset">重置</button>-->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>
+
+<!--返回参数-->
+<script type="text/html" id="goback-edit-html">
+    <div class="card">
+        <div class="card-body">
+            <form class="form-horizontal" id="form_param" onsubmit="return false;" data-url="api/goback/edit">
+                <input type="hidden" name="id" value="{{id}}">
+                <input type="hidden" name="list_id" value="{{list_id}}">
+                <input type="hidden" name="fid" value="{{fid}}">
+                <div class="form-group">
+                    <label class="control-label col-xs-2">字段名：</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" name="title"  value="{{title}}" required placeholder="请输入字段名..." autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">字段说明：</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" name="title_desc"  value="{{title_desc}}" required placeholder="请输入字段说明..." autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">字段类型：</label>
+                    <div class="col-xs-8">
+                        <select name="datatype" required class="form-control">
+                            <option value="string" {{if datatype=='string'}}selected{{/if}}>string</option>
+                            <option value="array" {{if datatype=='array'}}selected{{/if}}>array</option>
+                            <option value="int"  {{if datatype=='int'}}selected{{/if}}>int</option>
+                            <option value="float"  {{if datatype=='float'}}selected{{/if}}>float</option>
+                            <option value="file"  {{if datatype=='file'}}selected{{/if}}>file</option>
+                            <option value="json"  {{if datatype=='json'}}selected{{/if}}>json</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">字段示例：</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" name="demo_desc" value="{{demo_desc}}" autocomplete="off" placeholder="请输入参数示例..." required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">排序值：</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" name="sort" value="{{if sort>0}}{{sort}}{{else}}1{{/if}}" autocomplete="off" placeholder="请输入参数排序值..." required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">是否必含：</label>
+                    <div class="col-xs-8">
+                        <label class="radio-inline" >
+                            <input type="radio" name="isrequired" value="1" {{if !isrequired||isrequired==1}}checked{{/if}}>是
+                        </label>
+                        <label class="radio-inline" >
+                            <input type="radio" name="isrequired" value="0" {{if isrequired==0}}checked{{/if}}>否
+                        </label>
+                    </div>
+                </div>
+<!--                <div class="form-group">-->
+<!--                    <label class="control-label col-xs-2">list同级：</label>-->
+<!--                    <div class="col-xs-8">-->
+<!--                        <label class="radio-inline" >-->
+<!--                            <input type="radio" name="istop" value="1" {{if istop==1}}checked{{/if}}>是-->
+<!--                        </label>-->
+<!--                        <label class="radio-inline" >-->
+<!--                            <input type="radio" name="istop" value="0" {{if istop==0}}checked{{/if}}>否-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="form-group">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <button class="btn btn-primary bj-form-button"  type="button">立即提交</button>
+                        <!--<button class="btn btn-default" type="reset">重置</button>-->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>
+
+<!--模块管理-->
+<script type="text/html" id="module-edit-html">
+    <!--接口添加-->
+    <div class="card">
+        <div class="card-body">
+            <form class="form-horizontal"  onsubmit="return false;" data-url="project/module/edit">
+                <div class="form-group">
+                    <label class="control-label col-xs-3">所属项目：</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" required value="{{project_title}}" readonly autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-3">模块名：</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" name="title" required value="{{title}}" placeholder="请输入模块名..." autocomplete="off">
+                    </div>
+                </div>
+                <input type="hidden" name="pid" value="{{pid}}">
+                <input type="hidden" name="id" value="{{id}}">
+                <div class="form-group">
+                    <div class="col-xs-8 col-xs-offset-3">
+                        <button class="btn btn-primary bj-form-button"  type="button">立即提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>
+<!--公用js-->
+<script type="text/javascript" src="../Public/js/jquery.min.js"></script>
+<script type="text/javascript" src="../Public/js/template.js"></script>
+
+<script type="text/javascript" src="../Public/config.js"></script>
+<script type="text/javascript" src="../Public/common.js"></script>
+
+<script type="text/javascript" src="../Public/js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="../Public/js/main.min.js"></script>
+
+
+<script type="text/javascript" src="../Public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../Public/js/layui/layui.js"></script>
+
+<script>
+    var project_id = getQueryString('pid');
+    var id = getQueryString('id');
+
+        ajax('api/info', {id: id, project_id: project_id}, function (data) {
+            $('.api-this-id').val(id);
+            $('#api-info').html(template("api-info-html", data));
+            if(data.tags.length>0){
+                let tags=data.tags.split(","),len=tags.length;
+                for(let i = 0; i < len; i++) {
+                    $('input:checkbox[name="tags[]"][value = '+tags[i]+']').prop("checked", true);
+                }
+
+            }
+            $('.param-edit').attr('data-cid',data.id);
+            $('.goback-edit').attr('data-cid',data.id);
+
+        });
+
+
+    $(document).on('click','.param-edit',function () {
+        ajax('api/param/get', {id:$(this).attr('data-id'),list_id:$(this).attr('data-cid')}, function (data) {
+            layer.open({
+                title: "请求参数操作",
+                area: ['700px', '580px'],
+                type: 1,
+                content: template("param-edit-html", data),
+            });
+        })
+
+    })
+
+    $(document).on('click','.goback-edit',function () {
+        ajax('api/goback/get', {id:$(this).attr('data-id'),list_id:$(this).attr('data-cid'),fid:$(this).attr('data-fid')}, function (data) {
+            layer.open({
+                title: "添加返回参数",
+                area: ['700px', '580px'],
+                type: 1,
+                content: template("goback-edit-html", data),
+            });
+        })
+
+    })
+
+    $(document).on('click', '.api-form-button', function () {
+        let doc = $(this), form = doc.parents('form'), serializer = form.serializeArray();
+        let url = form.data('url'), callback_url = form.data('callback_url'), ajax_data = {};
+        $(serializer).each(function (i) {
+            ajax_data[this.name] = this.value
+        });
+
+        let checked_object = form.find('input[type=checkbox]:checked');
+        if (checked_object.length > 0) {
+            let temp = '';
+            $.each(checked_object, function () {
+                temp += this.value + ',';
+                if (ajax_data[this.name]) {
+                    ajax_data[this.name] = temp;
+                }
+            });
+        }
+        let tag='创建';
+        if(id>0){
+            tag='修改';
+        }
+        ajax(url, ajax_data, function (data) {
+            layer.msg(tag+'成功',function () {
+                window.location.href = BJ.url.web + 'api/editapi.html?pid='+data.pid+'&id='+data.id;
+            });
+
+        })
+    })
+
+    /*添加与修改模块*/
+    $(document).on('click','.editmodule',function () {
+        ajax('project/module/getone', {id:$(this).attr('data-id'),pid:$(this).attr('data-pid')}, function (data) {
+            layer.open({
+                title: "模块",
+                area: ['560px', '360px'],
+                type: 1,
+                content: template("module-edit-html", data),
+            });
+        })
+    });
+</script>
+
+</body>
+</html>

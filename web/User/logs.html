@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>日志 - 接口管理系统</title>
+    <link rel="icon" href="/favicon.ico" type="image/ico">
+    <meta name="keywords" content="hbh,后台模板,后台管理系统,HTML模板">
+    <meta name="description" content="一个基于Bootstrap的后台管理系统。">
+    <meta name="author" content="hbh">
+    <!--公用css-->
+    <link href="../Public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../Public/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="../Public/css/style.min.css" rel="stylesheet">
+
+    <link href="../Public/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="../Public/css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="lyear-layout-web">
+    <div class="lyear-layout-container">
+        <!--头部信息-->
+        <header class="lyear-layout-header">
+
+            <nav class="navbar navbar-default">
+                <div class="topbar">
+
+                    <div class="topbar-left">
+                        <div class="lyear-aside-toggler">
+                            <span class="lyear-toggler-bar"></span>
+                            <span class="lyear-toggler-bar"></span>
+                            <span class="lyear-toggler-bar"></span>
+                        </div>
+                    </div>
+
+                    <ul class="topbar-right">
+                        <li class="dropdown dropdown-profile">
+                            <a href="javascript:void(0)" data-toggle="dropdown">
+                                <img class="img-avatar img-avatar-48 m-r-10" src="../Public/images/admin.jpg"  />
+                                <span class="username"><span class="caret"></span></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li> <a href="javascript:void(0)"><i class="mdi mdi-account"></i> 个人信息</a> </li>
+                                <li> <a href="javascript:void(0)"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+                                <li class="divider"></li>
+                                <li> <a href="javascript:;" onclick="outLogin();"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+
+        </header>
+        <!--End 头部信息-->
+
+
+        <!--左侧导航-->
+        <aside class="lyear-layout-sidebar">
+
+            <!-- logo -->
+            <div id="logo" class="sidebar-header">
+                <a href="index.html"><img src="../Public/images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
+            </div>
+            <div class="lyear-layout-sidebar-scroll">
+
+                <nav class="sidebar-main">
+                    <ul class="nav nav-drawer">
+                        <li class="nav-item"><a href="javascript:;" class="go_this_window" data-url="Api/index"><i class="mdi mdi-home"></i>首页</a></li>
+
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0);"><i class="mdi mdi-settings"></i>系统</a>
+                            <ul class="nav nav-subnav">
+                                <li class="nav-item nav-item-has-subnav">
+                                    <a href="javascript:void(0);"><i class="mdi mdi-chevron-right"></i> 账户</a>
+                                    <ul class="nav nav-subnav" style="display: none;">
+                                        <li class="user-manager"><a  href="javascript:;" class="go_this_window" data-url="user/manager"><i class="mdi mdi-chevron-right"></i> 管理员</a> </li>
+                                        <li class="role-role"><a   href="javascript:;" class="go_this_window" data-url="role/role"><i class="mdi mdi-chevron-right"></i> 角色者</a> </li>
+                                    </ul>
+                                </li>
+<!--                                <li class="Project_project"><a  href="javascript:;" class="go_this_window" data-url="project/project"><i class="mdi mdi-chevron-right"></i> 项目</a></li>-->
+                                <li class="nav-item nav-item-has-subnav">
+                                    <a href="javascript:void(0);"><i class="mdi mdi-chevron-right"></i> 项目</a>
+                                    <ul class="nav nav-subnav" style="display: none;">
+                                        <li class="project-project"><a  href="javascript:;" class="go_this_window" data-url="project/project"><i class="mdi mdi-chevron-right"></i> 项目管理</a> </li>
+                                        <li class="project-testuser"><a   href="javascript:;" class="go_this_window" data-url="project/testuser"><i class="mdi mdi-chevron-right"></i> 项目测试帐号</a> </li>
+                                    </ul>
+                                </li>
+                                <li class="user-logs"><a href="javascript:;" class="go_this_window" data-url="User/logs"><i class="mdi mdi-chevron-right"></i> 日志</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)"><i class="mdi mdi-view-list"></i> 项目</a>
+                            <ul class="nav nav-subnav" id="left-nav-html">
+
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <p class="copyright">Copyright &copy; 2019. <a target="_blank" href="#!">.</a> All rights reserved.</p>
+                </div>
+            </div>
+
+        </aside>
+
+        <!--End 左侧导航-->
+
+        <!--页面主要内容-->
+        <main class="lyear-layout-content">
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+
+                            <div class="card-toolbar clearfix ">
+
+                                <form class="form-inline pull-left" action="#" method="get" data-url="log/action" data-list="user-log-list">
+
+                                    <div class="form-group">
+                                        <label class="control-label">类型：</label>
+                                        <select name="act_type" class="form-control">
+                                            <option value="0">--选择类型--</option>
+                                            <option value="新建" >新建</option>
+                                            <option value="修改" >修改</option>
+                                            <option value="删除" >删除</option>
+                                            <option value="登录" >登录</option>
+                                            <option value="退出" >退出</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">&nbsp;&nbsp;昵称：</label>
+                                        <input class="form-control" type="text" name="nick" value="" placeholder="请输入昵称..." autocomplete="off">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">&nbsp;&nbsp;开始时间：</label>
+                                        <input class="form-control" type="text" name="begintime" id="begintime" value="" placeholder="请输入开始时间..." autocomplete="off">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">&nbsp;&nbsp;结束时间：</label>
+                                        <input class="form-control" type="text" name="endtime" id="endtime" value="" placeholder="请输入结束时间..." autocomplete="off">
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-default bj-list-search" type="button">搜索</button>
+                                        <a href="javascript:;" class="btn btn-default btn-reload">重置</a>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="card-body">
+
+                                <div class="table-responsive" id="user-log-list">
+
+                                </div>
+                                <div id="page"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <!--End 页面主要内容-->
+    </div>
+</div>
+
+<script type="text/html" id="user-log-list-html">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>类型</th>
+            <th>用户名</th>
+            <th>行为</th>
+            <th>时间</th>
+            <th>地址</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{each data}}
+            <tr class="tr_{{$value.id}}">
+                <td scope="row">{{$value.id}}</td>
+                <td>{{$value.act_type}}</td>
+                <td>{{$value.nickname}}</td>
+                <td>{{$value.infos}}</td>
+                <td>{{$value.addtime}}</td>
+                <td>{{$value.ip}}--{{$value.location}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</script>
+
+
+<!--公用js-->
+<script type="text/javascript" src="../Public/js/jquery.min.js"></script>
+<script type="text/javascript" src="../Public/js/template.js"></script>
+
+<script type="text/javascript" src="../Public/config.js"></script>
+<script type="text/javascript" src="../Public/common.js"></script>
+
+<script type="text/javascript" src="../Public/js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="../Public/js/main.min.js"></script>
+
+
+<script type="text/javascript" src="../Public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../Public/js/layui/layui.js"></script>
+
+<script>
+    layui.use(['laydate'], function () {
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#begintime',
+        });
+        laydate.render({
+            elem: '#endtime',
+        });
+    });
+</script>
+
+</body>
+</html>
